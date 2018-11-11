@@ -1,0 +1,50 @@
+﻿@model RestaurantOrderProcessing.WebUI.Models.OrderIndexViewModel
+
+@{
+    ViewBag.Title = "Your order";
+}
+
+<h2>Your order</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Dish</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Total price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Order.Lines)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Dish.Name</td>
+                <td class="text-right">@line.Dish.Price.ToString("# UAH")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Dish.Price).ToString("# UAH"))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromOrder", "Order"))
+                    {
+                        @Html.Hidden("DishId", line.Dish.DishId);
+                        @Html.HiddenFor(x => x.ReturnUrl);
+                        <input class="btn btn-sm btn-warning" type="submit" value="Delete"/>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.Order.ComputeTotalValue().ToString("# UAH")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue order</a>
+</div>

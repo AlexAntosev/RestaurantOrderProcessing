@@ -1,0 +1,17 @@
+﻿@model RestaurantOrderProcessing.Domain.Entities.Dish
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label label-primary">@Model.Price.ToString("# UAH")</span>
+    </h3>
+    @using (Html.BeginForm("AddToOrder", "Order"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.DishId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add to order" />
+        </div>
+    }
+    <span class="lead">@Model.Weight.ToString()</span>
+</div>

@@ -1,0 +1,16 @@
+﻿@using RestaurantOrderProcessing.WebUI.Models
+@using RestaurantOrderProcessing.WebUI.HtmlHelpers
+@model DishesListViewModel
+
+@{
+    ViewBag.Title = "Dishes";
+}
+
+@foreach (var dish in @Model.Dishes)
+{
+    @Html.Partial("DishSummary", dish);
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory}));
+</div>
