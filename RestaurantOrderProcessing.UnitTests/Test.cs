@@ -315,7 +315,7 @@ namespace RestaurantOrderProcessing.UnitTests
                 new Dish { DishId = 3, Name = "Dish3"}
             });
 
-            OrderController orderController = new OrderController(mock.Object);
+            OrderController orderController = new OrderController(mock.Object,null);
             Order order = new Order();
 
             //Act
@@ -338,7 +338,7 @@ namespace RestaurantOrderProcessing.UnitTests
                 new Dish { DishId = 3, Name = "Dish3"}
             });
 
-            OrderController orderController = new OrderController(mock.Object);
+            OrderController orderController = new OrderController(mock.Object, null);
             Order order = new Order();
             string returnUrl = "Url";
 
@@ -349,6 +349,66 @@ namespace RestaurantOrderProcessing.UnitTests
             Assert.AreEqual(result.RouteValues["action"], "Index");
             Assert.AreEqual(result.RouteValues["returnUrl"], "Url");
         }
-        
+
+        [TestMethod]
+        public void Order_Is_Not_Empty()
+        {
+            //Arrange
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            Order order = new Order();
+            ShippingDetails shippingDetails = new ShippingDetails();
+            OrderController controller = new OrderController(null, mock.Object);
+
+            //Act
+            ViewResult result = controller.CheckoutOrder(order, shippingDetails);
+
+            //Asserts
+            mock.Verify(m => m.OrderProcess(It.IsAny<Order>(), It.IsAny<ShippingDetails>()), Times.Never());
+            Assert.AreEqual("", result.ViewName);
+            Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
+        }
+
+        [TestMethod]
+        public void Cannot_Checkout_Invalid_ShippingDetails()
+        {
+            // Arrange
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            Order order = new Order();
+            order.AddDish(new Dish(), 1);
+
+            OrderController controller = new OrderController(null, mock.Object);
+            
+            controller.ModelState.AddModelError("error", "error");
+
+            //Act
+            ViewResult result = controller.CheckoutOrder(order, new ShippingDetails());
+
+            // Asserts
+            mock.Verify(m => m.OrderProcess(It.IsAny<Order>(), It.IsAny<ShippingDetails>()), Times.Never());
+
+            Assert.AreEqual("", result.ViewName);
+            Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
+        }
+
+        [TestMethod]
+        public void Can_Checkout_And_Submit_Order()
+        {
+            // Arrange
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            
+            Order order = new Order();
+            order.AddDish(new Dish(), 1);
+
+            OrderController controller = new OrderController(null, mock.Object);
+
+            // Act
+            ViewResult result = controller.CheckoutOrder(order, new ShippingDetails());
+
+            // Assets
+            mock.Verify(m => m.OrderProcess(It.IsAny<Order>(), It.IsAny<ShippingDetails>()), Times.Once());
+            
+            Assert.AreEqual("Completed", result.ViewName);
+            Assert.AreEqual(true, result.ViewData.ModelState.IsValid);
+        }
     }
 }

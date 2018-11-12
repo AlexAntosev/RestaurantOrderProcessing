@@ -34,15 +34,16 @@ namespace RestaurantOrderProcessing.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            //Mock<IDishRepository> mock = new Mock<IDishRepository>();
-            //mock.Setup(m => m.Dishes).Returns(new List<Dish>
-            //{
-            //    new Dish { Name = "Pizza", Price = 50 },
-            //    new Dish { Name = "Tea", Price = 10 },
-            //    new Dish { Name = "Meat", Price = 120 }
-            //});
-            //kernel.Bind<IDishRepository>().ToConstant(mock.Object);
             kernel.Bind<IDishRepository>().To<EFDishRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager
+                    .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailSettings);
         }
     }
 }
