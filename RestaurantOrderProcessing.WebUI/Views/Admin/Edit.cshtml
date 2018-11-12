@@ -1,0 +1,16 @@
+﻿@model RestaurantOrderProcessing.Domain.Entities.Dish
+
+@{
+    ViewBag.Title = "Admin panel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Editing «@Model.Name»</h2>
+
+@using (Html.BeginForm("Edit", "Admin"))
+{
+    @Html.ValidationSummary();
+    @Html.EditorForModel()
+    <input type="submit" value="Save Changing" />
+    @Html.ActionLink("Cancel edit", "Index")
+}

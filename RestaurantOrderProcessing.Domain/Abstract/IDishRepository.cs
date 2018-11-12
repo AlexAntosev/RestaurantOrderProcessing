@@ -10,5 +10,7 @@ namespace RestaurantOrderProcessing.Domain.Abstract
     public interface IDishRepository
     {
         IEnumerable<Dish> Dishes { get; }
+        void SaveDish(Dish dish);
+        Dish DeleteDish(int dishId);
     }
 }

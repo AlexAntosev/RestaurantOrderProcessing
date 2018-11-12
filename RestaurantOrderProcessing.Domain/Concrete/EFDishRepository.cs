@@ -17,5 +17,35 @@ namespace RestaurantOrderProcessing.Domain.Concrete
         {
             get { return context.Dishes; }
         }
+
+        public void SaveDish(Dish dish)
+        {
+            if (dish.DishId == 0)
+                context.Dishes.Add(dish);
+            else
+            {
+                Dish dbEntry = context.Dishes.Find(dish.DishId);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = dish.Name;
+                    dbEntry.Weight = dish.Weight;
+                    dbEntry.Price = dish.Price;
+                    dbEntry.Category = dish.Category;
+                    dbEntry.Time = dish.Time;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public Dish DeleteDish(int dishId)
+        {
+            Dish dbEntry = context.Dishes.Find(dishId);
+            if(dbEntry != null)
+            {
+                context.Dishes.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }
