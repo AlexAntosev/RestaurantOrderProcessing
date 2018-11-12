@@ -8,6 +8,7 @@ using RestaurantOrderProcessing.Domain.Entities;
 
 namespace RestaurantOrderProcessing.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         IDishRepository repository;
@@ -29,10 +30,16 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Dish dish)
+        public ActionResult Edit(Dish dish, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    dish.ImageMimeType = image.ContentType;
+                    dish.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(dish.ImageData, 0, image.ContentLength);
+                }
                 repository.SaveDish(dish);
                 TempData["message"] = string.Format("Editing in dish \"{0}\" was saved", dish.Name);
                 return RedirectToAction("Index");

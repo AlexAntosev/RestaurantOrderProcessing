@@ -9,6 +9,7 @@ using Ninject;
 using RestaurantOrderProcessing.Domain.Abstract;
 using RestaurantOrderProcessing.Domain.Entities;
 using RestaurantOrderProcessing.Domain.Concrete;
+using RestaurantOrderProcessing.WebUI.Infrastructure.Concrete;
 
 namespace RestaurantOrderProcessing.WebUI.Infrastructure
 {
@@ -44,6 +45,7 @@ namespace RestaurantOrderProcessing.WebUI.Infrastructure
 
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
                 .WithConstructorArgument("settings", emailSettings);
+            kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
         }
     }
 }

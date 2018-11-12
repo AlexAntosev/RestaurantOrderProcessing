@@ -39,5 +39,19 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
             };
             return View(model);
         }
+
+        public FileContentResult GetImage(int dishId)
+        {
+            Dish dish = repository.Dishes.FirstOrDefault(d => d.DishId == dishId);
+
+            if (dish != null)
+            {
+                return File(dish.ImageData, dish.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
