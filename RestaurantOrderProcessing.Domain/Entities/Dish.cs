@@ -17,7 +17,7 @@ namespace RestaurantOrderProcessing.Domain.Entities
         [Required(ErrorMessage = "Enter name")]
         public string Name { get; set; }
         
-        [Display(Name = "Categoty")]
+        [Display(Name = "Category")]
         [Required(ErrorMessage = "Enter category")]
         public string Category { get; set; }
         

@@ -154,6 +154,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ErrorStyles.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\SiteStyles.css" />
+    <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,25 +1,28 @@
 ﻿@model RestaurantOrderProcessing.Domain.Entities.Dish
 
-<div class="well">
+<div class="dishcol">
     @if (Model.ImageData != null)
     {
-        <div class="pull-left" style="margin-right: 10px">
-            <img class="img-thumbnail" width="75" height="75"
+        <div>
+            <img class="dishimage"
                  src="@Url.Action("GetImage", "Dish",
                 new { Model.DishId })" />
         </div>
     }
-    <h3>
-        <strong>@Model.Name</strong>
-        <span class="pull-right label label-primary">@Model.Price.ToString("# UAH")</span>
-    </h3>
+    <div class="dishcontainer" style="padding-bottom: 50px">
+        <h3 class="dishname">@Model.Name</h3>
+        <p class="dishweight">@Model.Weight.ToString() g</p>
+        <p class="dishdescription">tralalalalallalalallalalalalalalallalalalalallalalalalallalalalalalallrlarlarlalral</p>
+    </div>
+    <p class="dishcontainer dishprice">@Model.Price.ToString("# UAH")</p>
     @using (Html.BeginForm("AddToOrder", "Order"))
     {
-        <div class="pull-right">
+        <div class="dishcontainer" style="padding-bottom: 10px">
             @Html.HiddenFor(x => x.DishId)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Add to order" />
+            <input type="submit" class="btnadd" value="Add to order" />
         </div>
     }
-    <span class="lead">@Model.Weight.ToString()</span>
+
+
 </div>

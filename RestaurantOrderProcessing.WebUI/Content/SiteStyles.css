@@ -1,0 +1,10 @@
+﻿.dish {
+    min-height: 20px;
+    padding: 10px;
+    margin-bottom: 0px;
+    background-color: darkred;
+    border: 1px solid darkgoldenrod;
+    border-radius: 4px;
+}
+
+

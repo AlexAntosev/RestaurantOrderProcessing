@@ -29,7 +29,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
             {
                 if(authProvider.Authenticate(model.Username, model.Password))
                 {
-                    return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
+                    return Redirect(Url.Action("Index", "Admin"));
                 }
                 else
                 {

@@ -53,7 +53,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
         {
             return PartialView(order);
         }
-
+        
         public ViewResult CheckoutOrder()
         {
             return View(new ShippingDetails());

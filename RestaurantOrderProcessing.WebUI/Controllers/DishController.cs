@@ -12,7 +12,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
     public class DishController : Controller
     {
         private IDishRepository repository;
-        public int pageSize = 4;
+        public int pageSize = 10;
 
         public DishController(IDishRepository repo)
         {
