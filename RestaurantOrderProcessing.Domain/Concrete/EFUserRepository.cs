@@ -10,32 +10,11 @@ namespace RestaurantOrderProcessing.Domain.Concrete
 {
     public class EFUserRepository : IUserRepository
     {
-        EFDbContext context = new EFDbContext();
+        UsersDbContext context = new UsersDbContext();
 
         public IEnumerable<User> Users
         {
             get { return context.Users; }
-        }
-
-        public void CreateUser(User user)
-        {
-            //User dbEntry = context.Users.Find(user.UserId);
-            //if(dbEntry == null)
-            //{
-                context.Users.Add(user);
-            //}            
-            context.SaveChanges();
-        }
-
-        public User DeleteUser(int userId)
-        {
-            User dbEntry = context.Users.Find(userId);
-            if(dbEntry != null)
-            {
-                context.Users.Remove(dbEntry);
-                context.SaveChanges();
-            }
-            return dbEntry;
         }
     }
 }

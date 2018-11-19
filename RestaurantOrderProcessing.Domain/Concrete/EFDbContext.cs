@@ -11,6 +11,10 @@ namespace RestaurantOrderProcessing.Domain.Concrete
     public class EFDbContext : DbContext
     {
         public DbSet<Dish> Dishes { get; set; }
-        public DbSet<User> Users { get; set; }
+
+        public static EFDbContext Create()
+        {
+            return new EFDbContext();
+        }
     }
 }

@@ -13,6 +13,7 @@
         <p class="lead">Please login to access the admin panel:</p>
         @using (Html.BeginForm("Register", "Account", new { Model }))
         {
+
             @Html.ValidationSummary()
             <div class="form-group">
                 <label>Email:</label>

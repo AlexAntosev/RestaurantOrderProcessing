@@ -10,7 +10,5 @@ namespace RestaurantOrderProcessing.Domain.Abstract
     public interface IUserRepository
     {
         IEnumerable<User> Users { get; }
-        void CreateUser(User user);
-        User DeleteUser(int userId);
     }
 }
