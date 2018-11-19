@@ -36,6 +36,7 @@ namespace RestaurantOrderProcessing.WebUI.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IDishRepository>().To<EFDishRepository>();
+            kernel.Bind<IUserRepository>().To<EFUserRepository>();
 
             EmailSettings emailSettings = new EmailSettings
             {

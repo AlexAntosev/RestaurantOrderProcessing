@@ -197,6 +197,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\OrderIndexViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +218,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
