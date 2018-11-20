@@ -114,5 +114,26 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteConfirm()
+        {
+            User user = await UserManager.FindByEmailAsync(User.Identity.Name);
+            if(user != null)
+            {
+                IdentityResult result = await UserManager.DeleteAsync(user);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Logout");
+                }
+            }
+            return RedirectToAction("List", "Dish");
+        }
     }
 }

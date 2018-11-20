@@ -217,6 +217,7 @@
     <Compile Include="Controllers\DishController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,8 +225,11 @@
     <Compile Include="Infrastructure\Binders\OrderModelBinder.cs" />
     <Compile Include="Infrastructure\Concrete\FormAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
+    <Compile Include="Models\CreateRoleViewModel.cs" />
     <Compile Include="Models\DishesListViewModel.cs" />
+    <Compile Include="Models\EditRoleViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\OrderIndexViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
@@ -252,6 +256,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\LoginPartial.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
