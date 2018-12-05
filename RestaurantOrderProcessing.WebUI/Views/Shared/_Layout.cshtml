@@ -14,15 +14,17 @@
     <header class="fixed">
         <div class="header">
             <div class="login">
-                @Html.Partial("LoginPartial");
+                @Html.Partial("LoginPartial")
             </div>
-            <a class="logo" href="#">Restaurant Order Processing</a>
+            <div class="logo">
+                <label>Обработчик заказов ресторана</label>
+            </div>
             <div class="order">
-                @Html.Action("Summary", "Order");
+                @Html.Action("Summary", "Order")
             </div>
         </div>
         <div class="dishescategory">
-            @Html.Action("Menu", "Nav");
+            @Html.Action("Menu", "Nav")
         </div>
     </header>
     <main class="main">    

@@ -34,6 +34,7 @@ namespace RestaurantOrderProcessing.Domain.Concrete
                     dbEntry.Time = dish.Time;
                     dbEntry.ImageData = dish.ImageData;
                     dbEntry.ImageMimeType = dish.ImageMimeType;
+                    dbEntry.Description = dish.Description;
                 }
             }
             context.SaveChanges();

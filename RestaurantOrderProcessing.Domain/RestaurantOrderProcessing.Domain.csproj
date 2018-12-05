@@ -115,6 +115,7 @@
     <Compile Include="Concrete\EFDishRepository.cs" />
     <Compile Include="Concrete\EFUserRepository.cs" />
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
+    <Compile Include="Concrete\OrderProcessor.cs" />
     <Compile Include="Concrete\UsersDbContext.cs" />
     <Compile Include="Entities\Dish.cs" />
     <Compile Include="Entities\EmailSettings.cs" />

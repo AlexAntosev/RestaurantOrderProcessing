@@ -1,13 +1,10 @@
 ﻿@model RestaurantOrderProcessing.Domain.Entities.Order
 
-<div class="navbar-right">
-    @Html.ActionLink("Order", "Index", "Order",
-    new { returnUrl = Request.Url.PathAndQuery },
-    new { @class = "btn btn-default navbar-btn" })
-</div>
-
-<div class="navbar-text navbar-right">
-    <b>Your order:</b>
-    @Model.Lines.Sum(x => x.Quantity) dishes,
-    @Model.ComputeTotalValue().ToString("# UAH")
+<div class="acc-nav-right">
+    <label class="dishes-count">
+        @Model.Lines.Sum(x => x.Quantity)
+    </label>
+    @Html.ActionLink("Корзина", "Index", "Order",
+        new {returnUrl = Request.Url.PathAndQuery},
+        new {@class = "acc-btn"})
 </div>

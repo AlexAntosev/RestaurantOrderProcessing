@@ -44,8 +44,7 @@ namespace RestaurantOrderProcessing.WebUI.Infrastructure
                     .AppSettings["Email.WriteAsFile"] ?? "false")
             };
 
-            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
-                .WithConstructorArgument("settings", emailSettings);
+            kernel.Bind<IOrderProcessor>().To<OrderProcessor>();
             kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
         }
     }

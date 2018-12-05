@@ -23,17 +23,21 @@ namespace RestaurantOrderProcessing.Domain.Entities
         
         [Display(Name = "Weight")]
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Enter povitive value for weight")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Enter positive value for weight")]
         public decimal Weight { get; set; }
-        
+
+        [Display(Name = "Description")]
+        [Required(ErrorMessage = "Enter food description")]
+        public string Description { get; set; }
+
         [Display(Name = "Price (UAH)")]
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Enter povitive value for price")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Enter positive value for price")]
         public decimal Price { get; set; }
         
         [Display(Name = "Time")]
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Enter povitive value for time")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Enter positive value for time")]
         public int Time { get; set; }
 
         public byte[] ImageData { get; set; }

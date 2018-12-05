@@ -11,16 +11,16 @@
     }
     <div class="dishcontainer" style="padding-bottom: 50px">
         <h3 class="dishname">@Model.Name</h3>
-        <p class="dishweight">@Model.Weight.ToString() g</p>
-        <p class="dishdescription">tralalalalallalalallalalalalalalallalalalalallalalalalallalalalalalallrlarlarlalral</p>
+        <p class="dishweight">@Model.Weight.ToString() г</p>
+        <p class="dishdescription">@Model.Description</p>
     </div>
-    <p class="dishcontainer dishprice">@Model.Price.ToString("# UAH")</p>
+    <p class="dishprice">@Model.Price.ToString("# UAH")</p>
     @using (Html.BeginForm("AddToOrder", "Order"))
     {
-        <div class="dishcontainer" style="padding-bottom: 10px">
+        <div class="adddishbtn" style="padding-bottom: 10px">
             @Html.HiddenFor(x => x.DishId)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btnadd" value="Add to order" />
+            <input type="submit" class="btnadd" value="Заказать" />
         </div>
     }
 

@@ -3,51 +3,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace RestaurantOrderProcessing.Domain.Entities
 {
     public class Order
     {
-        public List<OrderLine> lineCollection = new List<OrderLine>();
-
+        public Timer Timer = new Timer();
+        public List<OrderLine> LineCollection = new List<OrderLine>();
+        
         public void AddDish(Dish dish, int quantity)
         {
-            OrderLine line = lineCollection
+            var line = LineCollection
                 .Where(d => d.Dish.DishId == dish.DishId)
                 .FirstOrDefault();
 
             if (line == null)
             {
-                lineCollection.Add(new OrderLine
+                LineCollection.Add(new OrderLine
                 {
                     Dish = dish,
                     Quantity = quantity
                 });
+                
             }
             else
             {
                 line.Quantity += quantity;
             }
+
+            Timer.Interval += dish.Time * 1000;
         }
 
         public void RemoveDish(Dish dish)
         {
-            lineCollection.RemoveAll(d => d.Dish.DishId == dish.DishId);
+            LineCollection.RemoveAll(d => d.Dish.DishId == dish.DishId);
         }
 
         public decimal ComputeTotalValue()
         {
-            return lineCollection.Sum(d => d.Dish.Price * d.Quantity);
+            return LineCollection.Sum(d => d.Dish.Price * d.Quantity);
         }
 
         public void Clear()
         {
-            lineCollection.Clear();
+            LineCollection.Clear();
         }
 
         public IEnumerable<OrderLine> Lines
         {
-            get { return lineCollection; }
+            get { return LineCollection; }
+        }
+
+        public int CountDishTime(Dish dish, int quantity)
+        {
+            return dish.Time * quantity;
         }
     }
     
