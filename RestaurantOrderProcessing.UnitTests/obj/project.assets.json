@@ -952,11 +952,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.UnitTests\\RestaurantOrderProcessing.UnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.UnitTests\\RestaurantOrderProcessing.UnitTests.csproj",
       "projectName": "RestaurantOrderProcessing.UnitTests",
-      "projectPath": "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.UnitTests\\RestaurantOrderProcessing.UnitTests.csproj",
+      "projectPath": "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.UnitTests\\RestaurantOrderProcessing.UnitTests.csproj",
       "packagesPath": "C:\\Users\\sasha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.UnitTests\\obj\\",
+      "outputPath": "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -973,11 +973,11 @@
       "frameworks": {
         "net452": {
           "projectReferences": {
-            "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.Domain\\RestaurantOrderProcessing.Domain.csproj": {
-              "projectPath": "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.Domain\\RestaurantOrderProcessing.Domain.csproj"
+            "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.Domain\\RestaurantOrderProcessing.Domain.csproj": {
+              "projectPath": "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.Domain\\RestaurantOrderProcessing.Domain.csproj"
             },
-            "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.WebUI\\RestaurantOrderProcessing.WebUI.csproj": {
-              "projectPath": "C:\\Users\\sasha\\OneDrive\\Документи\\Visual Studio 2015\\Projects\\RestaurantOrderProcessing\\RestaurantOrderProcessing.WebUI\\RestaurantOrderProcessing.WebUI.csproj"
+            "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.WebUI\\RestaurantOrderProcessing.WebUI.csproj": {
+              "projectPath": "C:\\Users\\sasha\\Desktop\\Курсатч2.0\\RestaurantOrderProcessing\\RestaurantOrderProcessing.WebUI\\RestaurantOrderProcessing.WebUI.csproj"
             }
           }
         }

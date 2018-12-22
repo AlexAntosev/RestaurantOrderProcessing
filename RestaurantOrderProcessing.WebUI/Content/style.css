@@ -186,3 +186,58 @@
     }
 }
 
+.order-table {
+    width: 1000px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding-right: 100px;
+}
+
+.order-table thead tr th {
+    border-bottom: 2px solid #dddddd;
+}
+
+.order-table tbody tr td {
+    padding: 8px;
+}
+
+.order-table tfoot tr td {
+    padding: 8px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.order-main-text {
+    text-align: center;
+}
+
+.order-main {
+    padding-top: 150px;
+}
+
+.textbox-bank-card {
+    width: 180px;
+    text-align: center;
+}
+.checkout-center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+.admin-btn {
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    border-color: white;
+    width: auto;
+    padding-left: 80px;
+    padding-top: 20px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    float: left;
+    height: 50px;
+}

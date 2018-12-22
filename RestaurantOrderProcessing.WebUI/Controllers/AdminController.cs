@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RestaurantOrderProcessing.Domain.Abstract;
+using RestaurantOrderProcessing.Domain.Concrete;
 using RestaurantOrderProcessing.Domain.Entities;
 
 namespace RestaurantOrderProcessing.WebUI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles= "admin")]
     public class AdminController : Controller
     {
         IDishRepository repository;
@@ -17,20 +18,25 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
         {
             repository = repo;
         }
-        
+
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult DishesSummary()
         {
             return View(repository.Dishes);
         }
 
-        public ViewResult Edit(int dishId)
+        public ViewResult EditDish(int dishId)
         {
             Dish dish = repository.Dishes.FirstOrDefault(d => d.DishId == dishId);
             return View(dish);
         }
 
         [HttpPost]
-        public ActionResult Edit(Dish dish, HttpPostedFileBase image = null)
+        public ActionResult EditDish(Dish dish, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
@@ -42,7 +48,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
                 }
                 repository.SaveDish(dish);
                 TempData["message"] = string.Format("Editing in dish \"{0}\" was saved", dish.Name);
-                return RedirectToAction("Index");
+                return RedirectToAction("DishesSummary");
             }
             else
             {
@@ -53,7 +59,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
 
         public ViewResult Create()
         {
-            return View("Edit", new Dish());
+            return View("EditDish", new Dish());
         }
 
         [HttpPost]
@@ -64,7 +70,13 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
             {
                 TempData["message"] = string.Format("Editing in dish \"{0}\" was deleted", dish.Name);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("DishesSummary");
+        }
+
+        public ViewResult OrdersSummary()
+        {
+           // ViewBag.Table = 
+            return View(OrderProcessor.ClientRequests);
         }
     }
 }

@@ -4,48 +4,68 @@
     ViewBag.Title = "Your order";
 }
 
-<h2>Your order</h2>
-<table class="table">
-    <thead>
+<main class="order-main">
+    <h2 class="order-main-text">Ваш заказ:</h2>
+    <table class="order-table">
+        <thead>
         <tr>
-            <th>Quantity</th>
-            <th>Dish</th>
-            <th class="text-right">Price</th>
-            <th class="text-right">Total price</th>
+            <th>Количество</th>
+            <th>Блюдо</th>
+            <th class="text-right">Цена</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (var line in Model.Order.Lines)
         {
             <tr>
-                <td class="text-center">@line.Quantity</td>
+                <td class="text-left" width="150">@line.Quantity</td>
                 <td class="text-left">@line.Dish.Name</td>
-                <td class="text-right">@line.Dish.Price.ToString("# UAH")</td>
                 <td class="text-right">
                     @((line.Quantity * line.Dish.Price).ToString("# UAH"))
                 </td>
                 <td>
-                    @using (Html.BeginForm("RemoveFromOrder", "Order"))
+                    @if (Model.Order.Submited == false)
                     {
-                        @Html.Hidden("DishId", line.Dish.DishId);
-                        @Html.HiddenFor(x => x.ReturnUrl);
-                        <input class="btn btn-sm btn-warning" type="submit" value="Delete"/>
+                        using (Html.BeginForm("RemoveFromOrder", "Order"))
+                         {
+                             @Html.Hidden("DishId", line.Dish.DishId)
+                             ;
+                             @Html.HiddenFor(x => x.ReturnUrl)
+                             ;
+                             <input class="btn btn-sm btn-warning" type="submit" value="Удалить" />
+                         }
                     }
                 </td>
             </tr>
         }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" class="text-right"><b>Total:</b></td>
-            <td class="text-right">
-                @Model.Order.ComputeTotalValue().ToString("# UAH")
-            </td>
-        </tr>
-    </tfoot>
-</table>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-right"><b>Счет:</b></td>
+                <td class="text-right">
+                    @Model.Order.ComputeTotalValue().ToString("# UAH")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-right"><b>Время приготовления:</b></td>
+                <td class="text-right">
+                    @Model.Order.TimeLeft.ToString() минут
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 
-<div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue order</a>
-    @Html.ActionLink("Submit order", "CheckoutOrder", null, new { @class = "btn btn-primary" })
-</div>
+    <div class="text-center">
+        @if (Model.Order.Submited == false)
+        {
+            <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить заказ</a>
+            @Html.ActionLink("Подтвердить заказ", "CheckoutOrder", null, new {@class = "btn btn-primary"})
+        }
+        else
+        {
+            <h3>Ваш заказ готовиться</h3>
+            <label>Ожидайте: @Model.Order.TimeLeft минут</label>
+        }
+    </div>
+</main>
+

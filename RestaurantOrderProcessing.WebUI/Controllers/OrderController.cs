@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RestaurantOrderProcessing.Domain.Abstract;
+using RestaurantOrderProcessing.Domain.Concrete;
 using RestaurantOrderProcessing.Domain.Entities;
 using RestaurantOrderProcessing.WebUI.Models;
 
@@ -12,12 +13,10 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
     public class OrderController : Controller
     {
         IDishRepository repository;
-        IOrderProcessor orderProcessor;
 
-        public OrderController(IDishRepository repo, IOrderProcessor processor)
+        public OrderController(IDishRepository repo)
         {
             repository = repo;
-            orderProcessor = processor;
         }
 
         public ViewResult Index(Order order, string returnUrl)
@@ -60,16 +59,16 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ViewResult CheckoutOrder(Order order, ShippingDetails shippingDetails)
         {
             if (order.Lines.Count() == 0)
             {
-                ModelState.AddModelError("", "Your order is empty");
+                ModelState.AddModelError("", "Ваш заказ пуст");
             }
             if (ModelState.IsValid)
             {
-                orderProcessor.OrderProcess(order, shippingDetails);
-                order.Clear();
+                OrderProcessor.OrderProcess(order, shippingDetails);
                 return View("Completed");
             }
             else

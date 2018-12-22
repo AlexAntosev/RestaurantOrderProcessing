@@ -19,7 +19,12 @@
             <div class="logo">
                 <label>Обработчик заказов ресторана</label>
             </div>
+           
             <div class="order">
+                @if (User.IsInRole("admin"))
+                {
+                    @Html.ActionLink("Админ панель", "Index", "Admin", routeValues: null, htmlAttributes: new { title = "Manage", @class = "admin-btn" })
+                }
                 @Html.Action("Summary", "Order")
             </div>
         </div>
@@ -27,13 +32,8 @@
             @Html.Action("Menu", "Nav")
         </div>
     </header>
-    <main class="main">    
-        <div class="dishescol">
-             @RenderBody()
-        </div>
-    </main>
+    @RenderBody()
     <footer>
-
     </footer>
 </body>
 </html>

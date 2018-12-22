@@ -4,33 +4,25 @@
     ViewBag.Title = "CheckoutOrder";
 }
 
-<h2>CheckoutOrder</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary();
-    <h3>Data</h3>
-    <div class="form-group">
-        <h4>Card number:</h4>
-        @Html.TextBoxFor(x => x.CardNumber, new { @class = "form-control" })
+<main class="order-main">
+    <h2 class="order-main-text">Оплата заказа:</h2>
+    @using (Html.BeginForm())
+    {
+    <div class="checkout-center">
+        @Html.ValidationSummary()
+        <div class="form-group">
+            <h4 class="text-center">Номер карты:</h4>
+            @Html.TextBoxFor(x => x.CardNumber, new { @class = "form-control textbox-bank-card checkout-center" })
+        </div>
+        <div class="form-group">
+            <h4 class="text-center">Номер столика:</h4>
+            @Html.TextBoxFor(x => x.Table, new { @class = "form-control textbox-bank-card checkout-center" })
+        </div>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Оплатить" />
+        </div>
     </div>
-    
-    <div class="form-group">
-        <label>Month:</label>
-        @Html.TextBoxFor(x => x.Month, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        <label>Year:</label>
-        @Html.TextBoxFor(x => x.Year, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        <label>CVC:</label>
-        @Html.TextBoxFor(x => x.Cvc, new { @class = "form-control" })
-    </div>
-
-    <div class="text-center">
-        <input class="btn btn-primary" type="submit" value="Submit order" />
-    </div>
-}
+        
+    }
+</main>

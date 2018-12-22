@@ -1,0 +1,38 @@
+﻿@model IEnumerable<RestaurantOrderProcessing.Domain.Entities.ClientRequest>
+
+@{
+    ViewBag.Title = "OrdersSummary";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Заказы:</h2>
+
+<div class="panel-body">
+    @foreach (var clientRequest in Model)
+    {
+        <p><b>Столик номер: @clientRequest.ShippingDetails.Table</b></p>
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>Блюдо</th>
+                <th>Вес</th>
+                <th class="text-right">Цена</th>
+            </tr>
+            @foreach (var orderLine in clientRequest.Order.LineCollection)
+            {
+            <tr>
+                <td class="text-right">@orderLine.Dish.DishId</td>
+                <td class="text-right">@orderLine.Dish.Name</td>
+                <td class="text-right">@orderLine.Dish.Weight.ToString()</td>
+                <td class="text-right">@orderLine.Dish.Price.ToString("# UAH")</td>
+            </tr>
+            }
+            <tr>
+                <td colspan="3" class="text-right"><b>Время приготовления:</b></td>
+                <td class="text-right">
+                    @clientRequest.Order.TimeLeft.ToString() минут
+                </td>
+            </tr>
+        </table>
+    }
+</div>

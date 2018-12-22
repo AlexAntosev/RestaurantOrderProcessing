@@ -10,7 +10,7 @@ using RestaurantOrderProcessing.Domain.Entities;
 
 namespace RestaurantOrderProcessing.Domain.Concrete
 {
-    public class EmailOrderProcessor : IOrderProcessor
+    public class EmailOrderProcessor
     {
         EmailSettings emailSettings;
 
@@ -52,9 +52,7 @@ namespace RestaurantOrderProcessing.Domain.Concrete
                     .AppendLine("---")
                     .AppendLine("Back Card Details:")
                     .AppendLine(shippingDetails.CardNumber)
-                    .AppendLine(shippingDetails.Month.ToString())
-                    .AppendLine(shippingDetails.Year.ToString())
-                    .AppendLine(shippingDetails.Cvc.ToString())
+                    .AppendLine(shippingDetails.Table.ToString())
                     .AppendLine("---");
 
                 MailMessage mailMessage = new MailMessage(

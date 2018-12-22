@@ -109,7 +109,6 @@
   <ItemGroup>
     <Compile Include="Abstract\IAuthProvider.cs" />
     <Compile Include="Abstract\IDishRepository.cs" />
-    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDishRepository.cs" />
@@ -117,6 +116,7 @@
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Concrete\OrderProcessor.cs" />
     <Compile Include="Concrete\UsersDbContext.cs" />
+    <Compile Include="Entities\ClientRequest.cs" />
     <Compile Include="Entities\Dish.cs" />
     <Compile Include="Entities\EmailSettings.cs" />
     <Compile Include="Entities\Order.cs" />

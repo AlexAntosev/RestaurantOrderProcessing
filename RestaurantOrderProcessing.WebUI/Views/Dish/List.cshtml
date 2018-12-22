@@ -6,7 +6,12 @@
     ViewBag.Title = "Dishes";
 }
 
-@foreach (var dish in @Model.Dishes)
-{
-    @Html.Partial("DishSummary", dish);
-}
+<main class="main">    
+    <div class="dishescol">
+        @foreach (var dish in @Model.Dishes)
+        {
+            @Html.Partial("DishSummary", dish);
+        }
+    </div>
+</main>
+

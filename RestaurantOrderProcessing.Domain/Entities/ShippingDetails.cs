@@ -9,15 +9,10 @@ namespace RestaurantOrderProcessing.Domain.Entities
 {
     public class ShippingDetails
     {
-        [Required(ErrorMessage = "Enter number your bank card")]
+        [Required(ErrorMessage = "Заполните поле номера карты")]
         public string CardNumber { get; set; }
 
-        [Required(ErrorMessage = "Enter Month")]
-        public int Month { get; set; }
-        [Required(ErrorMessage = "Enter Year")]
-        public int Year { get; set; }
-
-        [Required(ErrorMessage = "Enter CVC")]
-        public int Cvc { get; set; }
+        [Required(ErrorMessage = "Укажите номер вашего столика")]
+        public int Table { get; set; }
     }
 }

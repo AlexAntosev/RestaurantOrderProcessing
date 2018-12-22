@@ -63,12 +63,17 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
                 }
                 else
                 {
+                    
                     ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     AuthenticationManager.SignOut();
                     AuthenticationManager.SignIn(new AuthenticationProperties
                     {
                         IsPersistent = true
                     }, claim);
+                    if(UserManager.IsInRole(user.Id, "admin"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     if (String.IsNullOrEmpty(returnUrl))
                         return RedirectToAction("List", "Dish");
                     return Redirect(returnUrl);
@@ -101,6 +106,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await UserManager.AddToRoleAsync(user.Id, model.AsAdmin ? "admin" : "user");
                     //repository.CreateUser(user);
                     return RedirectToAction("Login", "Account");
                 }
