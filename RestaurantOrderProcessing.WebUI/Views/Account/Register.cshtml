@@ -5,37 +5,29 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="panel">
-    <div class="panel-heading">
-        <h3>Register system:</h3>
+<h2 class="order-main-text">Регистрация:</h2>
+@using (Html.BeginForm("Register", "Account", new { Model }))
+{
+<div class="checkout-center">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="form-group">
+        <h4 class="text-center">Email:</h4>
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control textbox-bank-card checkout-center" })
     </div>
-    <div class="panel-body">
-        <p class="lead">Please login to access the admin panel:</p>
-        @using (Html.BeginForm("Register", "Account", new { Model }))
-        {
-
-            @Html.ValidationSummary()
-            <div class="form-group">
-                <label>Email:</label>
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Password:</label>
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Confirm Password:</label>
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Register as admin:</label>
-                @Html.CheckBoxFor(m => m.AsAdmin)
-            </div>
-            <label>Confirm Password:</label>
-                <input type="submit" value="Enter" class="btn btn-primary"/>
-                }
-            </div>
+    <div class="form-group">
+        <h4 class="text-center">Пароль:</h4>
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control textbox-bank-card checkout-center" })
+    </div>
+    <div class="form-group">
+        <h4 class="text-center">Подтвердите пароль:</h4>
+        @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control textbox-bank-card checkout-center" })
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Подтвердить" />
+    </div>
 </div>
+}
 
 
 

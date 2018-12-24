@@ -2,14 +2,14 @@
 
 @{
     ViewBag.Title = "Admin panel";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     HtmlHelper.ClientValidationEnabled = false;
     HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
 }
 
 <div class="panel">
     <div class="panel-heading">
-        <h3>Editing «@Model.Name»</h3>
+        <h3>Редактирование «@Model.Name»</h3>
     </div>
 
     @using (Html.BeginForm("Edit", "Admin",
@@ -45,7 +45,7 @@
             }
             <div class="form-group">
                 <div style="position:relative;">
-                    <label>Image</label>
+                    <label>Изображение</label>
                     <a class='btn' href='javascript:;'>
                         Choose file...
                         <input type="file" name="Image" size="40"
@@ -58,7 +58,7 @@
                 </div>
                 @if (Model.ImageData == null)
                 {
-                    <div class="form-control-static">No image</div>
+                    <div class="form-control-static">Без изображения</div>
                 }
                 else
                 {
@@ -70,7 +70,7 @@
         </div>
         <div class="panel-footer">
             <input type="submit" value="Save" class="btn btn-primary" />
-            @Html.ActionLink("Cancel edit", "Index", null, new
+            @Html.ActionLink("Отменить", "Index", null, new
             {
                 @class = "btn btn-default"
             })

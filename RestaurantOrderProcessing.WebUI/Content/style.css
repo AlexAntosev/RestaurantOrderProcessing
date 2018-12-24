@@ -14,7 +14,10 @@
 }
 
 .main {
-    padding-top: 200px;
+    padding-top: 150px;    
+}
+
+.main-dishlist {
     padding-left: 170px;
 }
 
@@ -43,6 +46,13 @@
     display: block;
     float: right;
     width: 120px;
+}
+
+.acc-nav-right-admin {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    float: right;
 }
 
 .acc-nav li {
@@ -240,4 +250,20 @@
     display: block;
     float: left;
     height: 50px;
+}
+
+.my-btn {
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
 }

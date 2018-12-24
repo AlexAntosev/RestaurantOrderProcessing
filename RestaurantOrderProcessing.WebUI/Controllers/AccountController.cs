@@ -72,7 +72,7 @@ namespace RestaurantOrderProcessing.WebUI.Controllers
                     }, claim);
                     if(UserManager.IsInRole(user.Id, "admin"))
                     {
-                        return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("OrdersSummary", "Admin");
                     }
                     if (String.IsNullOrEmpty(returnUrl))
                         return RedirectToAction("List", "Dish");

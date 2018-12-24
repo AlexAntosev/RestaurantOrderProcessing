@@ -1,16 +1,24 @@
 ﻿@model IEnumerable<string>
 
-@foreach (var link in Model)
+@if (User.IsInRole("admin"))
 {
-    @Html.RouteLink(link, new
-    {
-        controller = "Dish",
-        action = "List",
-        category = link,
-        page = 1
-    }, new
-    {
-        @class = "categories-btn"
-            + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
-    })
+    @Html.ActionLink("База данных блюд", "DishesSummary", "Admin", routeValues: null, htmlAttributes: new { id = "dishesLink", @class = "categories-btn" })
+    @Html.ActionLink("Заказы", "OrdersSummary", "Admin", routeValues: null, htmlAttributes: new { id = "ordersLink", @class = "categories-btn" })
+}
+else
+{
+    foreach (var link in Model)
+     {
+         @Html.RouteLink(link, new
+         {
+             controller = "Dish",
+             action = "List",
+             category = link,
+             page = 1
+         }, new
+         {
+             @class = "categories-btn"
+                      + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
+         })
+     }
 }

@@ -11,28 +11,30 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <header class="fixed">
-        <div class="header">
-            <div class="login">
-                @Html.Partial("LoginPartial")
-            </div>
-            <div class="logo">
-                <label>Обработчик заказов ресторана</label>
-            </div>
+<header class="fixed">
+    <div class="header">
+        <div class="login">
+            @Html.Partial("LoginPartial")
+        </div>
+        <div class="logo">
+            <label>Обработчик заказов ресторана</label>
+        </div>
            
-            <div class="order">
-                @if (User.IsInRole("admin"))
-                {
-                    @Html.ActionLink("Админ панель", "Index", "Admin", routeValues: null, htmlAttributes: new { title = "Manage", @class = "admin-btn" })
-                }
+        <div class="order">
+            @if (User.IsInRole("admin")) { }
+            else
+            {
                 @Html.Action("Summary", "Order")
-            </div>
+            }
         </div>
-        <div class="dishescategory">
-            @Html.Action("Menu", "Nav")
-        </div>
-    </header>
+    </div>
+    <div class="dishescategory">
+        @Html.Action("Menu", "Nav")
+    </div>
+</header>
+<main class="main">
     @RenderBody()
+</main>
     <footer>
     </footer>
 </body>
